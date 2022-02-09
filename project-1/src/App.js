@@ -1,10 +1,10 @@
 import './App.css';
-import BasicGrid from './DashBoard';
+import DashBoard from './components/DashBoard';
 
 function App() {
   return (
     <div className="App">
-     <BasicGrid/>
+     <DashBoard/>
     </div>
   );
 }

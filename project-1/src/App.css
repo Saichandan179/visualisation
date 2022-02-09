@@ -1,40 +1,29 @@
 .App {
   text-align: center;
-  background-color: #282c34;
-  height: 100vh;
+  /* background-color: #d5deec; */
+  height: 80vh;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.GridWrap {
+  padding-top: 20px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.GridComp{
+  height: 80vh;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.MuiDialog-paper {
+  height: 600px;
+  width: 800px;
+  max-width: 900px !important;
 }
 
-.App-link {
-  color: #61dafb;
+.MuiDialogActions-root{
+  justify-content: center !important;
+  -webkit-justify-content: center !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.scatterSVG{
+  position: relative;
+  bottom: 60px;
 }
