@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  /* background-color: #d5deec; */
+  background-color: #ffffff;
   height: 80vh;
 }
 
@@ -16,6 +16,10 @@
   height: 600px;
   width: 800px;
   max-width: 900px !important;
+}
+
+.MuiTab-root {
+  padding: 20px !important;
 }
 
 .MuiDialogActions-root{

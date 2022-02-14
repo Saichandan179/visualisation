@@ -1,10 +1,11 @@
 import './App.css';
-import DashBoard from './components/DashBoard';
+// import DashBoard from './components/DashBoard';
+import MainTabs from './components/MainTabs';
 
 function App() {
   return (
     <div className="App">
-     <DashBoard/>
+     <MainTabs/>
     </div>
   );
 }

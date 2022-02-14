@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import React, { useRef, useEffect } from 'react';
 
-function BarChart({ width, height, data, tilt }){
+function BarChart({ width, height, data, tilt, labels }){
     const ref = useRef();
 
     useEffect(() => {
@@ -21,8 +21,8 @@ function BarChart({ width, height, data, tilt }){
     }, [data, tilt]);
 
     const draw = () => {
-        let margin = {top: 20, right: 50, bottom: 30, left: 50};
-        let svgWidth = 720, svgHeight = 300;
+        let margin = {top: 20, right: 80, bottom: 50, left: 80};
+        let svgWidth = 850, svgHeight = 450;
         let height = svgHeight- margin.top- margin.bottom, width = svgWidth - margin.left - margin.right;
         let sourceNames = [], sourceCount = [];
 
@@ -54,6 +54,20 @@ function BarChart({ width, height, data, tilt }){
             .attr("class", "axis axis--y")
             .call(d3.axisLeft(y).ticks(5))
             ;
+
+        svg.append("text")
+            .attr("text-anchor", "end")
+            .attr("x", width-300)
+            .attr("y", height + 50)
+            .text(labels.xLabel);
+
+        svg.append("text")
+            .attr("text-anchor", "end")
+            .attr("y", -60)
+            .attr("x", -150)
+            .attr("dy", ".75em")
+            .attr("transform", "rotate(-90)")
+            .text("Mobiles Count");
                 
         // Create rectangles
         let bars = svg.selectAll('.bar')
@@ -65,9 +79,14 @@ function BarChart({ width, height, data, tilt }){
             .append('rect')
             // .attr('class', 'bar')
             .attr("x", function(d) { return x(d); })
-            .attr("y", function(d) { return y(data[d]); })
+            .attr("y", function(d) {
+                return y(0);
+            })
+            .attr("height", 0)
             .attr("width", x.bandwidth())
             .transition().duration(1000)
+            .attr("y", function(d) { return y(data[d]); })
+            .attr("fill" , "#386BB6 ")
             .attr("height", function(d) { return height - y(data[d]); });
             
         bars.append("text")
@@ -86,9 +105,10 @@ function BarChart({ width, height, data, tilt }){
             .attr("text-anchor", "middle");
             }
 
+
     const drawTilt = () => {
-        let margin = {top: 20, right: 60, bottom: 30, left: 60};
-        let svgWidth = 720, svgHeight = 300;
+        let margin = {top: 20, right: 80, bottom: 80, left: 100};
+        let svgWidth = 850, svgHeight = 500;
         let height = svgHeight- margin.top- margin.bottom, width = svgWidth - margin.left - margin.right;
         let sourceNames = [], sourceCount = [];
         
@@ -118,6 +138,20 @@ function BarChart({ width, height, data, tilt }){
         svg.append("g")
             .call(d3.axisLeft(y))
             ;
+    
+        svg.append("text")
+            .attr("text-anchor", "end")
+            .attr("x", width-300)
+            .attr("y", height + 40)
+            .text("Mobiles Count");
+
+        svg.append("text")
+            .attr("text-anchor", "end")
+            .attr("y", -80)
+            .attr("x", -120)
+            .attr("dy", ".75em")
+            .attr("transform", "rotate(-90)")
+            .text(labels.xLabel);
                 
         // Create rectangles
         let bars = svg.selectAll('.bar')
@@ -130,6 +164,7 @@ function BarChart({ width, height, data, tilt }){
             .attr("x", function(d) { return 0; })
             .attr("y", function(d) { return y(d); })
             .attr("width", function(d){return x(data[d])})
+            .attr("fill" , "#386BB6")
             .transition().duration(1000)
             .attr("height", function(d) { return y.bandwidth(); });
             
@@ -150,7 +185,10 @@ function BarChart({ width, height, data, tilt }){
     }
 
     return (
-        <div className="Chart">
+        <div className="Chart" style={{marginRight: "70px"}}>
+            <div className='ChartTitle' style={{marginBottom: "30px", marginTop: "10px"}}>
+                Number of mobiles v/s {labels.title}
+            </div>
             <svg ref={ref}>
             </svg>
         </div>
