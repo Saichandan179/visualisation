@@ -129,7 +129,7 @@ export default function ChartsContainer() {
           <FormGroup className={classes.formGroup}>
             <FormControlLabel
               control={<Switch onChange={handleSwitchChange} />}
-              label="Tilt Right"
+              label="Side Ways"
             />
           </FormGroup>
         </Grid>

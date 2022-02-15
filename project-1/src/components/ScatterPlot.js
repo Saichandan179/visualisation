@@ -28,7 +28,8 @@ function ScatterPlot({ width, height, data, dataType }) {
             result.push(p);
         }
     }
-    if(result[0] === "High") return ["Low", "Moderate", "High", "Very High"];
+    // console.log("result is", result);
+    if(result.includes("High")) return ["Low", "Moderate", "High", "Very High"];
 
     result.sort();
     return result;
@@ -90,7 +91,7 @@ function ScatterPlot({ width, height, data, dataType }) {
       .enter()
       .append("circle")
       .attr("cx", function (d) {
-        console.log("d in scatterplot: ", d);
+        // console.log("d in scatterplot: ", d);
         return dataType.var1 === num ? xScale(d.x) : xScale(d.x) + xScale.bandwidth()/2;
       })
       .attr("cy", function (d) {
